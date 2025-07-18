@@ -1,0 +1,13 @@
+### 종목 일봉 차트 단건 조회
+GET http://localhost:8081/charts/4/latest
+Content-Type: application/json
+
+### 종목정보 단건 조회
+GET http://localhost:8081/stocks/2
+Content-Type: application/json
+
+### 패턴탐지 단건 조회
+GET http://localhost:8081/charts/2/pattern/39
+Content-Type: application/json
+
+
