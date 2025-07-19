@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class ChartResponseDto {
 
 	private long stockId;
-	private LocalDate date;
-	private int open;
-	private int high;
-	private int low;
-	private int close;
-	private Integer volume;
-	private Long turnover;
-	private Double changePercent;
+	private LocalDate chartDate;
+	private int chartOpen;
+	private int chartHigh;
+	private int chartLow;
+	private int chartClose;
+	private Integer chartVolume;
+	private Long chartTurnover;
+	private Double chartChangePercent;
 
 }

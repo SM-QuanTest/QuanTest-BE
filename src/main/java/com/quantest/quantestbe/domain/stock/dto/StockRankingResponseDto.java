@@ -1,19 +1,16 @@
 package com.quantest.quantestbe.domain.stock.dto;
 
-import com.quantest.quantestbe.domain.stock.entity.Category;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 @AllArgsConstructor
 public class StockRankingResponseDto {
-	private String stockId;
-	private String stockName;
-	private Category category;
-	private String categoryLabel;
-	private int close;
-	private double changePercentage;
-	// private String icon;
+	private String categoryName;
+	private List<StockRankingDto> stocks;
 
 }

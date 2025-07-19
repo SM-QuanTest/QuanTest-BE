@@ -1,9 +1,15 @@
 package com.quantest.quantestbe.domain.stock.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.quantest.quantestbe.domain.stock.dto.StockRankingDto;
+import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
+import com.quantest.quantestbe.domain.stock.entity.Category;
 import com.quantest.quantestbe.domain.stock.entity.Stock;
 import com.quantest.quantestbe.domain.stock.repository.SectorRepository;
 import com.quantest.quantestbe.domain.stock.repository.StockRepository;
@@ -33,6 +39,16 @@ public class StockService {
 			.build();
 
 		return stockResponseDto;
+	}
+
+	public StockRankingResponseDto getStockRanking(Category category, LocalDate date) {
+		List<StockRankingDto> stockRankingDto = stockRepository.findStockRanking(category, date);
+
+		return StockRankingResponseDto.builder()
+			.categoryName(category.getCategoryName())
+			.stocks(stockRankingDto)
+			.build();
+
 	}
 
 }

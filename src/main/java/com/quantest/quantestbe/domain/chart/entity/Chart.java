@@ -3,9 +3,14 @@ package com.quantest.quantestbe.domain.chart.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.quantest.quantestbe.domain.stock.entity.Stock;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 
@@ -44,5 +49,9 @@ public class Chart {
 
 	@Column(name="created_at")
 	private LocalDateTime createdAt;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "stock_id")
+	private Stock stock;
 
 }
