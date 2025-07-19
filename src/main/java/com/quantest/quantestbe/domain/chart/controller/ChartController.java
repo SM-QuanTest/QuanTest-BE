@@ -38,9 +38,8 @@ public class ChartController {
 	@GetMapping("/{stockId}")
 	public ResponseEntity<Response<List<StockDailyPriceResponseDto>>> getDailyPrice(
 		@PathVariable Long stockId,
-		@RequestParam(required = false)
-		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate
+		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate
 	) {
 		List<StockDailyPriceResponseDto> res = chartService.getDailyPrice(stockId, startDate, endDate);
 		return ResponseEntity.ok(Response.success("종목 일봉 차트 조회 성공", res));

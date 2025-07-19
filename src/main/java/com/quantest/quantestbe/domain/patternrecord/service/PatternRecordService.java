@@ -1,12 +1,13 @@
 package com.quantest.quantestbe.domain.patternrecord.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quantest.quantestbe.domain.patternrecord.dto.PatternRecordResponseDto;
 import com.quantest.quantestbe.domain.patternrecord.repository.PatternRecordRepository;
-import com.quantest.quantestbe.global.exception.CustomException;
-import com.quantest.quantestbe.global.exception.ErrorCode;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,10 +18,13 @@ public class PatternRecordService {
 
 	private final PatternRecordRepository patternRecordRepository;
 
-	public PatternRecordResponseDto getPattern(Long patternRecordId) {
-		if (patternRecordRepository.findById(patternRecordId).isEmpty()) {
-			throw new CustomException(ErrorCode.PATTERNRECORD_NOT_FOUND);
-		}
-		return patternRecordRepository.findByPatternRecordId(patternRecordId);
+	public PatternRecordResponseDto getPatternRecord(Long stockId, Long patternRecordId) {
+		return patternRecordRepository.findPatternRecord(stockId, patternRecordId);
+	}
+
+	public List<PatternRecordResponseDto> getPatternRecords(Long stockId, LocalDate startDate, LocalDate endDate) {
+		return patternRecordRepository.findPatternRecords(stockId, startDate, endDate);
 	}
 }
+
+

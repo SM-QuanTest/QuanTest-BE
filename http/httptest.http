@@ -7,7 +7,7 @@ GET http://localhost:8081/stocks/2
 Content-Type: application/json
 
 ### 패턴탐지 단건 조회
-GET http://localhost:8081/charts/2/pattern/39
+GET http://localhost:8081/charts/2/patterns/33
 Content-Type: application/json
 
 
@@ -25,3 +25,7 @@ Content-Type: application/json
 GET http://localhost:8081/charts/2?startDate=2024-01-11&endDate=2025-07-16
 Content-Type: application/json
 
+
+### 패턴 탐지 다건 조회
+GET http://localhost:8081/charts/3/patterns?startDate=2024-04-05&endDate=2024-04-10
+Content-Type: application/json
