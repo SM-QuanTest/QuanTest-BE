@@ -16,6 +16,12 @@ GET http://localhost:8081/stocks/rankings?category=VOLUME&date=2024-01-01
 Content-Type: application/json
 
 
-### 종목 랭킹 리스트 조회
+### 종목 랭킹 리스트 조회2
 GET http://localhost:8081/stocks/rankings?category=RISE&date=2025-07-17
 Content-Type: application/json
+
+
+### 종목 일봉 차트 조회
+GET http://localhost:8081/charts/2?startDate=2024-01-11&endDate=2025-07-16
+Content-Type: application/json
+

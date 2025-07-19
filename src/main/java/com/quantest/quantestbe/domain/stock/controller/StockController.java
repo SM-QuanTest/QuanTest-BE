@@ -41,26 +41,4 @@ public class StockController {
 		return ResponseEntity.ok(Response.success("종목 정보 단건 조회 성공", res));
 	}
 
-	/*
-	// 종목 일봉가격 조회 - 스크롤 기반 페이지네이션
-	@GetMapping("/{ticker}/prices")
-	public ResponseEntity<Response<Slice<StockDailyPriceResponseDto>>> getDailyPrice(
-		@PathVariable String ticker,
-		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate cursorDate,
-		@RequestParam int size,
-		@RequestParam(defaultValue = "forward") String direction
-	) {
-		// Slice<StockDailyPrice> slice = stockService.getPage(ticker, cursorDate, size, direction);
-		// List<StockDailyPriceResponseDto> res = slice.getContent().stream().map(StockDailyPriceResponseDto::new).toList();
-		// String start =  res.get(0).date().toString();
-		// String end = res.get(res.size()-1).date().toString();
-		//PageInfo pi = new PageInfo( ~~ );
-		// Pageable pg =
-		// List<StockResponseDto> res = stockService.getDailyPrice(ticker, startDate, endDate);
-		Slice<StockDailyPriceResponseDto> ress = res.stream().map(StockDailyPriceResponseDto::new).toList();
-		List<>
-		return ResponseEntity.ok(Response.success("종목 차트 리스트 조회 성공", res));
-	}
-
-	*/
 }

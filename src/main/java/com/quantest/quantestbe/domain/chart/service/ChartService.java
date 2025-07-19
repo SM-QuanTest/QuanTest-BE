@@ -1,11 +1,15 @@
 package com.quantest.quantestbe.domain.chart.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.chart.dto.ChartResponseDto;
 import com.quantest.quantestbe.domain.chart.entity.Chart;
 import com.quantest.quantestbe.domain.chart.repository.ChartRepository;
+import com.quantest.quantestbe.domain.stock.dto.StockDailyPriceResponseDto;
 import com.quantest.quantestbe.global.exception.CustomException;
 import com.quantest.quantestbe.global.exception.ErrorCode;
 
@@ -36,4 +40,9 @@ public class ChartService {
 		);
 		return chartResponseDto;
 	}
+
+	public List<StockDailyPriceResponseDto> getDailyPrice(Long stockId, LocalDate startDate, LocalDate endDate) {
+		return chartRepository.getDailyPrice(stockId, startDate, endDate);
+	}
+
 }
