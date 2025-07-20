@@ -1,6 +1,7 @@
 package com.quantest.quantestbe.domain.stock.repository;
 
 import static com.quantest.quantestbe.domain.chart.entity.QChart.chart;
+import static com.quantest.quantestbe.domain.record.entity.QRecord.record;
 import static com.quantest.quantestbe.domain.stock.entity.QStock.stock;
 
 import java.time.LocalDate;
@@ -38,9 +39,10 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 		}
 
 		List<StockRankingDto> result = queryFactory
-			.select(new QStockRankingDto(stock.id, stock.stockName, chart.chartChangePercentage, chart.chartClose))
-			.from(stock)
-			.join(chart).on(stock.id.eq(chart.stock.id))
+			.select(new QStockRankingDto(stock.id, stock.stockName, chart.chartChangePercentage, chart.chartClose, record.recordDirection))
+			.from(record)
+			.join(record.chart, chart)
+			.join(chart.stock, stock)
 			.where(chart.chartDate.eq(date))
 			.orderBy(rankingOrder)
 			.limit(100)
