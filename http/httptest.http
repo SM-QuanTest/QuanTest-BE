@@ -1,5 +1,5 @@
 ### 종목 일봉 차트 단건 조회
-GET http://localhost:8081/charts/4/latest
+GET http://localhost:8081/charts/2/latest
 Content-Type: application/json
 
 ### 종목정보 단건 조회
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 
 ### 종목 랭킹 리스트 조회
-GET http://localhost:8081/stocks/rankings?category=VOLUME&date=2024-01-01
+GET http://localhost:8081/stocks/rankings?category=RISE&date=2024-01-15
 Content-Type: application/json
 
 
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 
 ### 종목 일봉 차트 조회
-GET http://localhost:8081/charts/2?startDate=2024-01-11&endDate=2025-07-16
+GET http://localhost:8081/charts/2?startDate=2025-07-16&endDate=2025-07-17
 Content-Type: application/json
 
 

@@ -24,20 +24,33 @@ public class ChartService {
 
 	public ChartResponseDto getLatestChart(long stockId) {
 
-		Chart chart = chartRepository.findById(stockId)
-			.orElseThrow(() -> new CustomException(ErrorCode.STOCK_NOT_FOUND));
+		List<Chart> charts = chartRepository
+			.findTop2ByStockIdOrderByChartDateDesc(stockId);
 
-		ChartResponseDto chartResponseDto = new ChartResponseDto(
-			chart.getId(),
-			chart.getChartDate(),
-			chart.getChartOpen(),
-			chart.getChartHigh(),
-			chart.getChartLow(),
-			chart.getChartClose(),
-			chart.getChartVolume(),
-			chart.getChartTurnover(),
-			chart.getChartChangePercentage()
-		);
+		if (charts.isEmpty()) {
+			throw new CustomException(ErrorCode.CHART_NOT_FOUND);
+		}
+
+		Chart chart = charts.get(0);
+		int priceChange = chart.getChartClose();
+		if (charts.size() > 1) {
+			priceChange -= charts.get(1).getChartClose();
+		}
+
+		ChartResponseDto chartResponseDto = ChartResponseDto.builder()
+			.stockId(chart.getStock().getId())
+			.chartDate(chart.getChartDate())
+			.chartOpen(chart.getChartOpen())
+			.chartHigh(chart.getChartHigh())
+			.chartLow(chart.getChartLow())
+			.chartClose(chart.getChartClose())
+			.chartVolume(chart.getChartVolume())
+			.chartTurnover(chart.getChartTurnover())
+			.chartChangePercent(chart.getChartChangePercentage())
+			.stockName(chart.getStock().getStockName())
+			.priceChange(priceChange)
+			.build();
+
 		return chartResponseDto;
 	}
 

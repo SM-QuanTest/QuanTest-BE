@@ -11,6 +11,8 @@ public enum ErrorCode {
 
 	STOCK_NOT_FOUND(HttpStatus.NOT_FOUND, "종목을 찾을 수 없습니다."),
 
+	CHART_NOT_FOUND(HttpStatus.NOT_FOUND, "차트를 찾을 수 없습니다."),
+
 	PATTERNRECORD_NOT_FOUND(HttpStatus.NOT_FOUND, "패턴기록을 찾을 수 없습니다."),
 
 	CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "랭킹 카테고리를 찾을 수 없습니다.");

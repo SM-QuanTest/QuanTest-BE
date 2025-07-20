@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class StockController {
 	private final StockService stockService;
 
-	// 종목 차트 리스트 조회
+	// 종목 랭킹 리스트 조회
 	@GetMapping("/rankings")
 	public ResponseEntity<Response<StockRankingResponseDto>> getStockRanking(
 		@RequestParam(defaultValue = "TURNOVER") Category category,
