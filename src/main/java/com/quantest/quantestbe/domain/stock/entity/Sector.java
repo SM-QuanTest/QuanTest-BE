@@ -15,7 +15,7 @@ public class Sector {
 	@Column(name = "id", insertable = false, updatable = false)
 	private Long id;
 
-	@Column(name = "sector_name", nullable = false)
+	@Column(name = "sector_name", nullable = false, unique = true)
 	private String sectorName;
 
 }
