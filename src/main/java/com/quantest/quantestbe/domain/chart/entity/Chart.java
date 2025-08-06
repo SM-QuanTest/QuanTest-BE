@@ -1,5 +1,6 @@
 package com.quantest.quantestbe.domain.chart.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -44,8 +45,8 @@ public class Chart {
 	@Column(name="chart_turnover")
 	private Long chartTurnover;
 
-	@Column(name="chart_change_percentage")
-	private Double chartChangePercentage;
+	@Column(name="chart_change_percentage", columnDefinition = "numeric(10,2)")
+	private BigDecimal chartChangePercentage;
 
 	@Column(name="created_at")
 	private LocalDateTime createdAt;

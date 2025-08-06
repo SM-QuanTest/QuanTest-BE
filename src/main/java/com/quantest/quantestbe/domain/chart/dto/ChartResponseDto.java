@@ -1,5 +1,6 @@
 package com.quantest.quantestbe.domain.chart.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class ChartResponseDto {
 	private int chartClose;
 	private Integer chartVolume;
 	private Long chartTurnover;
-	private Double chartChangePercent;
+	private BigDecimal chartChangePercent;
 	private String stockName;
 	private int priceChange;
 
