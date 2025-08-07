@@ -29,3 +29,8 @@ Content-Type: application/json
 ### 패턴 탐지 다건 조회
 GET http://localhost:8081/charts/3/patterns?startDate=2024-04-05&endDate=2024-04-10
 Content-Type: application/json
+
+
+### 업종 다건 조회
+GET http://localhost:8081/sectors
+Content-Type: application/json
