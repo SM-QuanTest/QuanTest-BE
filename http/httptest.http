@@ -42,10 +42,10 @@ Content-Type: application/json
 
 
 ### 패턴 다건 조회(상승형)
-GET http://localhost:8081/patterns/bearish
+GET http://localhost:8081/patterns?direction=BEARISH
 Content-Type: application/json
 
 
 ### 패턴 다건 조회(하락형)
-GET http://localhost:8081/patterns/bullish
+GET http://localhost:8081/patterns?direction=BULLISH
 Content-Type: application/json
