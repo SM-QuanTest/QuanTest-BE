@@ -39,10 +39,14 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 		}
 
 		List<StockRankingDto> result = queryFactory
-			.select(new QStockRankingDto(stock.id, stock.stockName, chart.chartChangePercentage, chart.chartClose, record.recordDirection))
-			.from(record)
-			.join(record.chart, chart)
+			.select(new QStockRankingDto(
+				stock.id, stock.stockName,
+				chart.chartChangePercentage, chart.chartClose,
+				record.recordDirection
+			))
+			.from(chart)
 			.join(chart.stock, stock)
+			.leftJoin(record).on(record.chart.eq(chart))
 			.where(chart.chartDate.eq(date))
 			.orderBy(rankingOrder)
 			.limit(100)
