@@ -1,10 +1,13 @@
 package com.quantest.quantestbe.domain.stock.repository;
 
 import static com.quantest.quantestbe.domain.chart.entity.QChart.chart;
+import static com.quantest.quantestbe.domain.pattern.entity.QPattern.pattern;
+import static com.quantest.quantestbe.domain.patternrecord.entity.QPatternRecord.patternRecord;
 import static com.quantest.quantestbe.domain.record.entity.QRecord.record;
 import static com.quantest.quantestbe.domain.stock.entity.QStock.stock;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -50,6 +53,38 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 			.where(chart.chartDate.eq(date))
 			.orderBy(rankingOrder)
 			.limit(100)
+			.fetch();
+
+		return result;
+	}
+
+	@Override
+	public List<StockRankingDto> findPatternDetectedStocks(Long patternId) {
+
+		LocalDate latestDate = queryFactory
+			.select(chart.chartDate.max())
+			.from(chart)
+			.fetchOne();
+
+		if (latestDate == null) {
+			return Collections.emptyList();
+		}
+
+		List<StockRankingDto> result = queryFactory
+			.select(new QStockRankingDto(
+				stock.id, stock.stockName,
+				chart.chartChangePercentage, chart.chartClose,
+				record.recordDirection
+			))
+			.from(patternRecord)
+			.join(patternRecord.pattern, pattern)
+			.join(patternRecord.record, record)
+			.join(record.chart, chart)
+			.join(chart.stock, stock)
+			.where(
+				pattern.id.eq(patternId),
+				chart.chartDate.eq(latestDate)
+			)
 			.fetch();
 
 		return result;

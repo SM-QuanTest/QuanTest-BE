@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quantest.quantestbe.domain.pattern.dto.PatternResponseDto;
 import com.quantest.quantestbe.domain.pattern.entity.Direction;
 import com.quantest.quantestbe.domain.pattern.service.PatternService;
+import com.quantest.quantestbe.domain.stock.dto.StockRankingDto;
 import com.quantest.quantestbe.global.Response;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,14 @@ public class PatternController {
 	) {
 		List<PatternResponseDto> res = patternService.getPatterns(direction);
 		return ResponseEntity.ok(Response.success("패턴 다건 조회 성공", res));
+	}
+
+	// 패턴 탐지된 종목 다건 조회
+	@GetMapping("/{patternId}")
+	public ResponseEntity<Response<List<StockRankingDto>>> getPatternDetectedStocks(
+		@PathVariable Long patternId) {
+		List<StockRankingDto> res = patternService.getPatternDetectedStocks(patternId);
+		return ResponseEntity.ok(Response.success("패턴 탐지된 종목 다건 조회 성공", res));
 	}
 
 }

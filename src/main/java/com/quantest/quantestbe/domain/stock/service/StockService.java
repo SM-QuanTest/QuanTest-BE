@@ -51,4 +51,9 @@ public class StockService {
 
 	}
 
+	public List<StockRankingDto> getPatternDetectedStocks(Long patternId) {
+		List<StockRankingDto> stockRankingDto = stockRepository.findPatternDetectedStocks(patternId);
+		return stockRankingDto;
+	}
+
 }

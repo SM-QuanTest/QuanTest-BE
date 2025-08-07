@@ -49,3 +49,8 @@ Content-Type: application/json
 ### 패턴 다건 조회(하락형)
 GET http://localhost:8081/patterns?direction=BULLISH
 Content-Type: application/json
+
+
+### 패턴 탐지된 종목 다건 조회(테스트X)
+GET http://localhost:8081/patterns/1
+Content-Type: application/json

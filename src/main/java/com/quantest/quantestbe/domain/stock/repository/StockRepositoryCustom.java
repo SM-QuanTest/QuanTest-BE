@@ -10,4 +10,5 @@ public interface StockRepositoryCustom {
 
 	public List<StockRankingDto> findStockRanking(Category category, LocalDate date);
 
+	public List<StockRankingDto> findPatternDetectedStocks(Long patternId);
 }
