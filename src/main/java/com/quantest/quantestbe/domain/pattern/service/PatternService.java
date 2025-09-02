@@ -38,6 +38,7 @@ public class PatternService {
 				.patternId(pattern.getId())
 				.patternName(pattern.getPatternName())
 				.patternDirection(pattern.getPatternDirection())
+				.patternImageUrl("/images/patterns/" + pattern.getPatternName() + ".jpg")
 				.build())
 			.collect(Collectors.toList());
 

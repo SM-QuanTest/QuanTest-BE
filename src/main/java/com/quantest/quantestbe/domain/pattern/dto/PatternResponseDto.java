@@ -10,5 +10,6 @@ public class PatternResponseDto {
 	private Long patternId;
 	private String patternName;
 	private String patternDirection;
+	private String patternImageUrl;
 
 }
