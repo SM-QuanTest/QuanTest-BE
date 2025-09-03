@@ -19,7 +19,7 @@ public class SectorService {
 	private final SectorRepository sectorRepository;
 
 	public List<SectorResponseDto> getSectors() {
-		List<SectorResponseDto> sectorResponseDto = sectorRepository.findAll()
+		List<SectorResponseDto> sectorResponseDtos = sectorRepository.findAll()
 			.stream()
 			.map(sector -> SectorResponseDto.builder()
 				.SectorId(sector.getId())
@@ -27,7 +27,7 @@ public class SectorService {
 				.build())
 			.collect(Collectors.toList());
 
-		return sectorResponseDto;
+		return sectorResponseDtos;
 	}
 
 }
