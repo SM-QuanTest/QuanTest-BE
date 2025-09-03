@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.indicator.dto.IndicatorConfigResponseDto;
+import com.quantest.quantestbe.domain.indicator.dto.IndicatorLineResponseDto;
 import com.quantest.quantestbe.domain.indicator.dto.IndicatorResponseDto;
 import com.quantest.quantestbe.domain.indicator.service.IndicatorService;
 import com.quantest.quantestbe.global.Response;
@@ -34,5 +35,14 @@ public class IndicatorController {
 	) {
 		List<IndicatorConfigResponseDto> res = indicatorService.getIndicatorConfigListByIndicatorId(indicatorId);
 		return ResponseEntity.ok(Response.success("지표에 따른 지표 설정 다건조회 성공", res));
+	}
+
+	@GetMapping("/{indicatorId}/lines")
+	public ResponseEntity<Response<List<IndicatorLineResponseDto>>> getIndicatorLineListByIndicatorId(
+		@PathVariable("indicatorId") long indicatorId
+	) {
+		List<IndicatorLineResponseDto> res = indicatorService.getIndicatorLineListByIndicatorId(indicatorId);
+		return ResponseEntity.ok(Response.success("지표에 따른 지표 라인 다건조회 성공", res));
+
 	}
 }

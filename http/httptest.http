@@ -64,3 +64,8 @@ Content-Type: application/json
 ### 지표에 따른 지표 설정 다건조회
 GET http://localhost:8081/indicators/1/configs
 Content-Type: application/json
+
+
+### 지표에 따른 지표 라인 다건조회
+GET http://localhost:8081/indicators/1/lines
+Content-Type: application/json
