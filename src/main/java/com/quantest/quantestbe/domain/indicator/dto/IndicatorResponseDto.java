@@ -1,4 +1,4 @@
-package com.quantest.quantestbe.domain.chart.dto;
+package com.quantest.quantestbe.domain.indicator.dto;
 
 import lombok.Builder;
 import lombok.Getter;

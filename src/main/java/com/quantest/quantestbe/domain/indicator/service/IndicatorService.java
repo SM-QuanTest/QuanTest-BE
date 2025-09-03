@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quantest.quantestbe.domain.chart.dto.IndicatorResponseDto;
+import com.quantest.quantestbe.domain.indicator.dto.IndicatorConfigResponseDto;
+import com.quantest.quantestbe.domain.indicator.dto.IndicatorResponseDto;
+import com.quantest.quantestbe.domain.indicator.repository.IndicatorConfigRepository;
 import com.quantest.quantestbe.domain.indicator.repository.IndicatorRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -17,9 +19,10 @@ import lombok.RequiredArgsConstructor;
 public class IndicatorService {
 
 	private final IndicatorRepository indicatorRepository;
+	private final IndicatorConfigRepository indicatorConfigRepository;
 
 	public List<IndicatorResponseDto> getIndicatorList() {
-		List<IndicatorResponseDto>  indicatorResponseDtos = indicatorRepository.findAll()
+		List<IndicatorResponseDto> indicatorResponseDtos = indicatorRepository.findAll()
 			.stream()
 			.map(indicator -> IndicatorResponseDto.builder()
 				.indicatorId(indicator.getId())
@@ -28,6 +31,18 @@ public class IndicatorService {
 			.collect(Collectors.toList());
 
 		return indicatorResponseDtos;
+	}
+
+	public List<IndicatorConfigResponseDto> getIndicatorConfigListByIndicatorId(long indicatorId) {
+		List<IndicatorConfigResponseDto> indicatorConfigResponseDtos = indicatorConfigRepository.findAllByIndicatorId(indicatorId)
+			.stream()
+			.map(indicatorConfig -> IndicatorConfigResponseDto.builder()
+				.indicatorConfigName(indicatorConfig.getIndicatorConfigName())
+				.indicatorConfigValue(indicatorConfig.getIndicatorConfigValue())
+				.build())
+			.collect(Collectors.toList());
+
+		return indicatorConfigResponseDtos;
 	}
 
 }
