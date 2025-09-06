@@ -1,4 +1,4 @@
-package com.quantest.quantestbe.domain.patternrecord.dto;
+package com.quantest.quantestbe.domain.stock.dto;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.SectorResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.SectorResponseDto;
 import com.quantest.quantestbe.domain.stock.repository.SectorRepository;
 
 import lombok.RequiredArgsConstructor;

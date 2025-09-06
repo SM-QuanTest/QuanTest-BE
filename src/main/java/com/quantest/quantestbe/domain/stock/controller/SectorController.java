@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.SectorResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.SectorResponseDto;
 import com.quantest.quantestbe.domain.stock.service.SectorService;
 import com.quantest.quantestbe.global.Response;
 
