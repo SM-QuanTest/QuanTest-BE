@@ -12,8 +12,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.quantest.quantestbe.domain.stock.dto.QStockRankingDto;
-import com.quantest.quantestbe.domain.stock.dto.StockRankingDto;
+import com.quantest.quantestbe.domain.stock.dto.QStockResultResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
 import com.quantest.quantestbe.domain.stock.entity.Category;
 import com.quantest.quantestbe.global.exception.CustomException;
 import com.quantest.quantestbe.global.exception.ErrorCode;
@@ -29,7 +29,7 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 	private final JPAQueryFactory queryFactory;
 
 	@Override
-	public List<StockRankingDto> findStockRanking(Category category, LocalDate date) {
+	public List<StockResultResponseDto> findStockRanking(Category category, LocalDate date) {
 
 		OrderSpecifier rankingOrder;
 
@@ -41,8 +41,8 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 			default -> throw new CustomException(ErrorCode.CATEGORY_NOT_FOUND);
 		}
 
-		List<StockRankingDto> result = queryFactory
-			.select(new QStockRankingDto(
+		List<StockResultResponseDto> result = queryFactory
+			.select(new QStockResultResponseDto(
 				stock.id, stock.stockName,
 				chart.chartChangePercentage, chart.chartClose,
 				record.recordDirection
@@ -59,7 +59,7 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 	}
 
 	@Override
-	public List<StockRankingDto> findPatternDetectedStocks(Long patternId) {
+	public List<StockResultResponseDto> findPatternDetectedStocks(Long patternId) {
 
 		LocalDate latestDate = queryFactory
 			.select(chart.chartDate.max())
@@ -70,8 +70,8 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 			return Collections.emptyList();
 		}
 
-		List<StockRankingDto> result = queryFactory
-			.select(new QStockRankingDto(
+		List<StockResultResponseDto> result = queryFactory
+			.select(new QStockResultResponseDto(
 				stock.id, stock.stockName,
 				chart.chartChangePercentage, chart.chartClose,
 				record.recordDirection

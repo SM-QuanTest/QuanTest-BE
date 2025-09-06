@@ -11,6 +11,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class StockRankingResponseDto {
 	private String categoryName;
-	private List<StockRankingDto> stocks;
+	private List<StockResultResponseDto> stocks;
 
 }

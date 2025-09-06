@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quantest.quantestbe.domain.stock.dto.StockRankingDto;
+import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
 import com.quantest.quantestbe.domain.stock.entity.Category;
@@ -42,18 +42,18 @@ public class StockService {
 	}
 
 	public StockRankingResponseDto getStockRanking(Category category, LocalDate date) {
-		List<StockRankingDto> stockRankingDto = stockRepository.findStockRanking(category, date);
+		List<StockResultResponseDto> stockResultResponseDto = stockRepository.findStockRanking(category, date);
 
 		return StockRankingResponseDto.builder()
 			.categoryName(category.getCategoryName())
-			.stocks(stockRankingDto)
+			.stocks(stockResultResponseDto)
 			.build();
 
 	}
 
-	public List<StockRankingDto> getPatternDetectedStocks(Long patternId) {
-		List<StockRankingDto> stockRankingDto = stockRepository.findPatternDetectedStocks(patternId);
-		return stockRankingDto;
+	public List<StockResultResponseDto> getPatternDetectedStocks(Long patternId) {
+		List<StockResultResponseDto> stockResultResponseDto = stockRepository.findPatternDetectedStocks(patternId);
+		return stockResultResponseDto;
 	}
 
 }

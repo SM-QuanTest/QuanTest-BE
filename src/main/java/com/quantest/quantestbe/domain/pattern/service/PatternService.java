@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.quantest.quantestbe.domain.pattern.Repository.PatternRepository;
 import com.quantest.quantestbe.domain.pattern.dto.PatternResponseDto;
 import com.quantest.quantestbe.domain.pattern.entity.Direction;
-import com.quantest.quantestbe.domain.stock.dto.StockRankingDto;
+import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
 import com.quantest.quantestbe.domain.stock.service.StockService;
 
 import lombok.RequiredArgsConstructor;
@@ -45,8 +45,8 @@ public class PatternService {
 		return patternResponseDto;
 	}
 
-	public List<StockRankingDto> getPatternDetectedStocks(Long patternId) {
-		List<StockRankingDto> stockResponseDto = stockService.getPatternDetectedStocks(patternId);
+	public List<StockResultResponseDto> getPatternDetectedStocks(Long patternId) {
+		List<StockResultResponseDto> stockResponseDto = stockService.getPatternDetectedStocks(patternId);
 		return stockResponseDto;
 	}
 

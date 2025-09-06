@@ -7,7 +7,7 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 
 @Getter
-public class StockRankingDto {
+public class StockResultResponseDto {
 	private Long stockId;
 	private String stockName;
 	private BigDecimal chartChangePercentage;
@@ -15,7 +15,7 @@ public class StockRankingDto {
 	private char recordDirection;
 
 	@QueryProjection
-	public StockRankingDto(Long stockId, String stockName, BigDecimal chartChangePercentage, int chartClose, char recordDirection) {
+	public StockResultResponseDto(Long stockId, String stockName, BigDecimal chartChangePercentage, int chartClose, char recordDirection) {
 		this.stockId = stockId;
 		this.stockName = stockName;
 		this.chartChangePercentage = chartChangePercentage;
