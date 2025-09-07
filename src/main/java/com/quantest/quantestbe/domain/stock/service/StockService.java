@@ -6,9 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
+import com.quantest.quantestbe.domain.search.dto.SearchRequestDto;
 import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
 import com.quantest.quantestbe.domain.stock.entity.Category;
 import com.quantest.quantestbe.domain.stock.entity.Stock;
 import com.quantest.quantestbe.domain.stock.repository.SectorRepository;
@@ -56,4 +57,8 @@ public class StockService {
 		return stockResultResponseDto;
 	}
 
+	public List<StockResultResponseDto> findSearchResult(LocalDate date, SearchRequestDto searchRequestDto) {
+		List<StockResultResponseDto> stockResultResponseDto = stockRepository.findSearchResult(date, searchRequestDto);
+		return stockResultResponseDto;
+	}
 }

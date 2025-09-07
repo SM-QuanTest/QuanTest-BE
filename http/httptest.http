@@ -17,7 +17,7 @@ Content-Type: application/json
 
 
 ### 종목 랭킹 리스트 조회2
-GET http://localhost:8081/stocks/rankings?category=RISE&date=2025-07-17
+GET http://localhost:8081/stocks/rankings?category=RISE&date=2025-08-04
 Content-Type: application/json
 
 
@@ -69,3 +69,57 @@ Content-Type: application/json
 ### 지표에 따른 지표 라인 다건조회
 GET http://localhost:8081/indicators/1/lines
 Content-Type: application/json
+
+
+### 필터링된 종목 다건조회
+POST http://localhost:8081/search?date=2025-08-04
+Content-Type: application/json
+
+{
+  "sectorIds" : [ 1, 2, 3, 4, 5, 6 ],
+  "chartFilterList" : [
+    {
+      "priceType" : "CHART_OPEN",
+      "priceMin" : null,
+      "priceMax" : 100000
+    },
+    {
+      "priceType" : "CHART_VOLUME",
+      "priceMin" : null,
+      "priceMax" : 100000
+    }
+  ],
+  "indicatorFilterList" : [
+    {
+      "indicatorId" : 1,
+      "indicatorLineFilterList" : [
+        {
+          "filterType" : "COMPARE_INDICATOR",
+          "indicatorLineIdA" : 1,
+          "indicatorLineIdB" : 2,
+          "operator" : "LESS_THAN_OR_EQUAL",
+          "threshold" : null
+        },
+        {
+          "filterType" : "COMPARE_INDICATOR",
+          "indicatorLineIdA" : 1,
+          "indicatorLineIdB" : 3,
+          "operator" : "LESS_THAN_OR_EQUAL",
+          "threshold" : null
+        }
+      ]
+    },
+    {
+      "indicatorId" : 34,
+      "indicatorLineFilterList" : [
+        {
+          "filterType" : "DIFFERENCE",
+          "indicatorLineIdA" : 70,
+          "indicatorLineIdB" : 71,
+          "operator" : "GREATER_THAN",
+          "threshold" : 0
+        }
+      ]
+    }
+  ]
+}
