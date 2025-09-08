@@ -76,11 +76,11 @@ POST http://localhost:8081/search?date=2025-08-04
 Content-Type: application/json
 
 {
-  "sectorIds" : [ 1, 2, 3, 4, 5, 6 ],
+  "sectorIds" : [ 11 ],
   "chartFilterList" : [
     {
       "priceType" : "CHART_OPEN",
-      "priceMin" : null,
+      "priceMin" : 13000,
       "priceMax" : 100000
     },
     {
