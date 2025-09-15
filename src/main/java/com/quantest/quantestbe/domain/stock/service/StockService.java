@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.quantest.quantestbe.domain.latest_date.LatestDateService;
 import com.quantest.quantestbe.domain.search.dto.SearchRequestDto;
 import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
@@ -26,6 +27,7 @@ public class StockService {
 
 	private final StockRepository stockRepository;
 	private final SectorRepository sectorRepository;
+	private final LatestDateService latestDateService;
 
 	public StockResponseDto getStock(Long stockId) {
 		Stock stock = stockRepository.findById(stockId)
@@ -43,13 +45,19 @@ public class StockService {
 	}
 
 	public StockRankingResponseDto getStockRanking(Category category, LocalDate date) {
+
+		LocalDate latestDate = latestDateService.getLatestDateByLatestDateName("charts");
+		if (date.isAfter(latestDate)) {
+			date = latestDate;
+		}
+
 		List<StockResultResponseDto> stockResultResponseDto = stockRepository.findStockRanking(category, date);
 
 		return StockRankingResponseDto.builder()
 			.categoryName(category.getCategoryName())
+			.chartDate(date)
 			.stocks(stockResultResponseDto)
 			.build();
-
 	}
 
 	public List<StockResultResponseDto> getPatternDetectedStocks(Long patternId) {
