@@ -2,7 +2,7 @@ package com.quantest.quantestbe.domain.stock.repository;
 
 import static com.quantest.quantestbe.domain.chart.entity.QChart.chart;
 import static com.quantest.quantestbe.domain.pattern.entity.QPattern.pattern;
-import static com.quantest.quantestbe.domain.patternrecord.entity.QPatternRecord.patternRecord;
+import static com.quantest.quantestbe.domain.record.entity.QPatternRecord.patternRecord;
 import static com.quantest.quantestbe.domain.record.entity.QRecord.record;
 import static com.quantest.quantestbe.domain.stock.entity.QStock.stock;
 
@@ -91,13 +91,14 @@ public class StockRepositoryImpl implements StockRepositoryCustom {
 			))
 			.from(patternRecord)
 			.join(patternRecord.pattern, pattern)
-			.join(patternRecord.record, record)
-			.join(record.chart, chart)
+			.join(patternRecord.chart, chart)
 			.join(chart.stock, stock)
+			.leftJoin(record).on(record.chart.eq(chart))
 			.where(
 				pattern.id.eq(patternId),
 				chart.chartDate.eq(latestDate)
 			)
+			.distinct()
 			.fetch();
 
 		return result;

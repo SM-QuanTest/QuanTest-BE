@@ -1,4 +1,4 @@
-package com.quantest.quantestbe.domain.patternrecord.service;
+package com.quantest.quantestbe.domain.record.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.PatternRecordResponseDto;
-import com.quantest.quantestbe.domain.patternrecord.repository.PatternRecordRepository;
+import com.quantest.quantestbe.domain.record.dto.PatternRecordResponseDto;
+import com.quantest.quantestbe.domain.record.repository.PatternRecordRepository;
 
 import lombok.RequiredArgsConstructor;
 
