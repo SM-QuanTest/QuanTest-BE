@@ -20,11 +20,5 @@ public class Pattern {
 
 	@Column(name="pattern_direction")
 	private String patternDirection;
-
-	@Column(name="pattern_rule")
-	private String patternRule;
-
-	@Column(name="pattern_signal")
-	private String patternSignal;
 }
 
