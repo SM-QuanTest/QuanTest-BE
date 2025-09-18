@@ -1,4 +1,4 @@
-package com.quantest.quantestbe.domain.patternrecord.controller;
+package com.quantest.quantestbe.domain.record.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.PatternRecordResponseDto;
-import com.quantest.quantestbe.domain.patternrecord.service.PatternRecordService;
+import com.quantest.quantestbe.domain.record.dto.PatternRecordResponseDto;
+import com.quantest.quantestbe.domain.record.service.PatternRecordService;
 import com.quantest.quantestbe.global.Response;
 
 import lombok.RequiredArgsConstructor;

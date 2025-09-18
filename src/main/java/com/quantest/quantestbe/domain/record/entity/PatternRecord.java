@@ -1,10 +1,9 @@
-package com.quantest.quantestbe.domain.patternrecord.entity;
+package com.quantest.quantestbe.domain.record.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.quantest.quantestbe.domain.pattern.entity.Pattern;
-import com.quantest.quantestbe.domain.record.entity.Record;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

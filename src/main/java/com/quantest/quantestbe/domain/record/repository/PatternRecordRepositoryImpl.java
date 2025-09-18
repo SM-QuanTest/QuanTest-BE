@@ -1,4 +1,4 @@
-package com.quantest.quantestbe.domain.patternrecord.repository;
+package com.quantest.quantestbe.domain.record.repository;
 
 import static com.quantest.quantestbe.domain.chart.entity.QChart.chart;
 import static com.quantest.quantestbe.domain.pattern.entity.QPattern.pattern;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.PatternRecordResponseDto;
+import com.quantest.quantestbe.domain.record.dto.PatternRecordResponseDto;
 import com.quantest.quantestbe.domain.patternrecord.dto.QPatternRecordResponseDto;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

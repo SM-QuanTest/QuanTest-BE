@@ -1,9 +1,9 @@
-package com.quantest.quantestbe.domain.patternrecord.repository;
+package com.quantest.quantestbe.domain.record.repository;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.quantest.quantestbe.domain.patternrecord.dto.PatternRecordResponseDto;
+import com.quantest.quantestbe.domain.record.dto.PatternRecordResponseDto;
 
 public interface PatternRecordRepositoryCustom {
 
