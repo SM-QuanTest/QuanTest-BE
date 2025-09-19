@@ -1,7 +1,6 @@
 package com.quantest.quantestbe.domain.chart.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.chart.dto.ChartResponseDto;
+import com.quantest.quantestbe.domain.chart.dto.StockChartResponseDto;
 import com.quantest.quantestbe.domain.chart.service.ChartService;
-import com.quantest.quantestbe.domain.stock.dto.StockDailyPriceResponseDto;
 import com.quantest.quantestbe.global.Response;
 
 import lombok.RequiredArgsConstructor;
@@ -36,12 +35,12 @@ public class ChartController {
 
 	// 종목 일봉 차트 조회
 	@GetMapping("/{stockId}")
-	public ResponseEntity<Response<List<StockDailyPriceResponseDto>>> getDailyPrice(
+	public ResponseEntity<Response<StockChartResponseDto>> getStockChart(
 		@PathVariable Long stockId,
-		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate
+		@RequestParam(defaultValue = "100") int limit,
+		@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate cursorDate
 	) {
-		List<StockDailyPriceResponseDto> res = chartService.getDailyPrice(stockId, startDate, endDate);
+		StockChartResponseDto res = chartService.getStockChart(stockId, limit, cursorDate);
 		return ResponseEntity.ok(Response.success("종목 일봉 차트 조회 성공", res));
 	}
 

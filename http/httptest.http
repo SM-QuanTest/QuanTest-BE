@@ -22,12 +22,16 @@ Content-Type: application/json
 
 
 ### 종목 일봉 차트 조회
-GET http://localhost:8081/charts/2?startDate=2025-07-16&endDate=2025-07-17
+GET http://localhost:8081/charts/2
+Content-Type: application/json
+
+### 종목 일봉 차트 조회(커서)
+GET http://localhost:8081/charts/2?limit=100&cursorDate=2025-03-14
 Content-Type: application/json
 
 
 ### 패턴 탐지 다건 조회
-GET http://localhost:8081/charts/3/patterns?startDate=2024-04-05&endDate=2024-04-10
+GET http://localhost:8081/charts/1/patterns?startDate=2025-08-01&endDate=2025-08-10
 Content-Type: application/json
 
 
@@ -51,8 +55,8 @@ GET http://localhost:8081/patterns?direction=BULLISH
 Content-Type: application/json
 
 
-### 패턴 탐지된 종목 다건 조회(테스트X)
-GET http://localhost:8081/patterns/1
+### 패턴 탐지된 종목 다건 조회
+GET http://localhost:8081/patterns/46
 Content-Type: application/json
 
 
