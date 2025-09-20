@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.chart.dto.ChartResponseDto;
-import com.quantest.quantestbe.domain.chart.dto.StockChartResponseDto;
+import com.quantest.quantestbe.domain.chart.dto.StockChartCursorResponseDto;
 import com.quantest.quantestbe.domain.chart.entity.Chart;
 import com.quantest.quantestbe.domain.chart.repository.ChartRepository;
 import com.quantest.quantestbe.domain.stock.dto.StockDailyPriceResponseDto;
@@ -56,7 +56,7 @@ public class ChartService {
 		return chartResponseDto;
 	}
 
-	public StockChartResponseDto getStockChart(Long stockId, int limit, LocalDate cursorDate) {
+	public StockChartCursorResponseDto getStockChart(Long stockId, int limit, LocalDate cursorDate) {
 
 		List<StockDailyPriceResponseDto> dailyPrice = getDailyPrice(stockId, limit + 1, cursorDate);
 
@@ -74,7 +74,7 @@ public class ChartService {
 			dailyPrice.remove(0);
 		}
 
-		return StockChartResponseDto.builder()
+		return StockChartCursorResponseDto.builder()
 			.contents(dailyPrice)
 			.nextCursor(nextCursor)
 			.hasNext(hasNext)

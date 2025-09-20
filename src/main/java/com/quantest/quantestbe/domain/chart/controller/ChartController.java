@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.chart.dto.ChartResponseDto;
-import com.quantest.quantestbe.domain.chart.dto.StockChartResponseDto;
+import com.quantest.quantestbe.domain.chart.dto.StockChartCursorResponseDto;
 import com.quantest.quantestbe.domain.chart.service.ChartService;
 import com.quantest.quantestbe.global.Response;
 
@@ -35,12 +35,12 @@ public class ChartController {
 
 	// 종목 일봉 차트 조회
 	@GetMapping("/{stockId}")
-	public ResponseEntity<Response<StockChartResponseDto>> getStockChart(
+	public ResponseEntity<Response<StockChartCursorResponseDto>> getStockChart(
 		@PathVariable Long stockId,
 		@RequestParam(defaultValue = "100") int limit,
 		@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate cursorDate
 	) {
-		StockChartResponseDto res = chartService.getStockChart(stockId, limit, cursorDate);
+		StockChartCursorResponseDto res = chartService.getStockChart(stockId, limit, cursorDate);
 		return ResponseEntity.ok(Response.success("종목 일봉 차트 조회 성공", res));
 	}
 

@@ -10,7 +10,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class StockChartResponseDto {
+public class StockChartCursorResponseDto {
 
 	private List<StockDailyPriceResponseDto> contents;
 	private LocalDate nextCursor;
