@@ -84,7 +84,7 @@ public class ChartService {
 	public List<StockDailyPriceResponseDto> getDailyPrice(Long stockId, int limit, LocalDate cursorDate) {
 
 		if (cursorDate == null) {
-			LocalDate latestDate = chartRepository.getLatestDate(stockId);
+			LocalDate latestDate = getLatestDate(stockId);
 			if (latestDate == null) {
 				return Collections.emptyList();
 			}
@@ -92,6 +92,10 @@ public class ChartService {
 		}
 
 		return chartRepository.getDailyPrice(stockId, limit, cursorDate);
+	}
+
+	public LocalDate getLatestDate(Long stockId) {
+		return chartRepository.getLatestDate(stockId);
 	}
 
 }

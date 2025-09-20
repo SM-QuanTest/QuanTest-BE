@@ -40,7 +40,7 @@ public class PatternRecordRepositoryImpl implements PatternRecordRepositoryCusto
 	}
 
 	@Override
-	public List<PatternRecordResponseDto> findPatternRecords(Long stockId, LocalDate startDate, LocalDate endDate) {
+	public List<PatternRecordResponseDto> findPatternRecords(Long stockId, int limit, LocalDate cursorDate) {
 		List<PatternRecordResponseDto> result = queryFactory
 			.select(new QPatternRecordResponseDto(pattern.id, pattern.patternName, patternRecord.id, chart.chartDate, pattern.patternDirection))
 			.from(patternRecord)
@@ -49,9 +49,10 @@ public class PatternRecordRepositoryImpl implements PatternRecordRepositoryCusto
 			.join(chart.stock, stock)
 			.where(
 				stock.id.eq(stockId),
-				chart.chartDate.between(startDate, endDate)
+				chart.chartDate.loe(cursorDate)
 			)
 			.orderBy(chart.chartDate.desc())
+			.limit(limit)
 			.fetch();
 
 		return result;

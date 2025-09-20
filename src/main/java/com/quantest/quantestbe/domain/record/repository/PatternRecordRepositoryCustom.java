@@ -8,6 +8,7 @@ import com.quantest.quantestbe.domain.record.dto.PatternRecordResponseDto;
 public interface PatternRecordRepositoryCustom {
 
 	public PatternRecordResponseDto findPatternRecord(Long stockId, Long patternRecordId);
-	public List<PatternRecordResponseDto> findPatternRecords(Long stockId, LocalDate startDate, LocalDate endDate);
+
+	public List<PatternRecordResponseDto> findPatternRecords(Long stockId, int limit, LocalDate cursorDate);
 
 }
