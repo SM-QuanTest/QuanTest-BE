@@ -1,6 +1,7 @@
 package com.quantest.quantestbe.domain.stock.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.StocksResponseDto;
 import com.quantest.quantestbe.domain.stock.entity.Category;
 import com.quantest.quantestbe.domain.stock.service.StockService;
 import com.quantest.quantestbe.global.Response;
@@ -39,6 +41,13 @@ public class StockController {
 	public ResponseEntity<Response<StockResponseDto>> getStock(@PathVariable Long stockId) {
 		StockResponseDto res = stockService.getStock(stockId);
 		return ResponseEntity.ok(Response.success("종목 정보 단건 조회 성공", res));
+	}
+
+	// 종목 정보 다건 조회
+	@GetMapping
+	public ResponseEntity<Response<List<StocksResponseDto>>> getStocks() {
+		List<StocksResponseDto> res = stockService.getStocks();
+		return ResponseEntity.ok(Response.success("종목 정보 다건 조회 성공", res));
 	}
 
 }

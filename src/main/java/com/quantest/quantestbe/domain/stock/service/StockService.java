@@ -2,6 +2,7 @@ package com.quantest.quantestbe.domain.stock.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import com.quantest.quantestbe.domain.search.dto.SearchRequestDto;
 import com.quantest.quantestbe.domain.stock.dto.StockRankingResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResponseDto;
 import com.quantest.quantestbe.domain.stock.dto.StockResultResponseDto;
+import com.quantest.quantestbe.domain.stock.dto.StocksResponseDto;
 import com.quantest.quantestbe.domain.stock.entity.Category;
 import com.quantest.quantestbe.domain.stock.entity.Stock;
 import com.quantest.quantestbe.domain.stock.repository.SectorRepository;
@@ -68,5 +70,17 @@ public class StockService {
 	public List<StockResultResponseDto> findSearchResult(LocalDate date, SearchRequestDto searchRequestDto) {
 		List<StockResultResponseDto> stockResultResponseDto = stockRepository.findSearchResult(date, searchRequestDto);
 		return stockResultResponseDto;
+	}
+
+	public List<StocksResponseDto> getStocks() {
+		List<StocksResponseDto> stocksResponseDtos = stockRepository.findAll()
+			.stream()
+			.map(stock -> StocksResponseDto.builder()
+				.stockId(stock.getId())
+				.stockName(stock.getStockName())
+				.build())
+			.collect(Collectors.toList());
+
+		return stocksResponseDtos;
 	}
 }

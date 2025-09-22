@@ -6,13 +6,19 @@ Content-Type: application/json
 GET http://localhost:8081/stocks/2
 Content-Type: application/json
 
+
+### 종목정보 다건 조회
+GET http://localhost:8081/stocks
+Content-Type: application/json
+
+
 ### 패턴탐지 단건 조회
 GET http://localhost:8081/charts/2/patterns/33
 Content-Type: application/json
 
 
 ### 종목 랭킹 리스트 조회
-GET http://localhost:8081/stocks/rankings?category=RISE&date=2024-01-16
+GET http://localhost:8081/stocks/rankings?category=RISE&date=2025-09-09
 Content-Type: application/json
 
 
